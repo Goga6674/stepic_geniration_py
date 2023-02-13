@@ -3,20 +3,22 @@ n = len(arr)
 
 flag = 0
 midl_a = 0
-test = []
-for i in range(1, n**2):
-    test.append(i)
-print(test)
+line = []
+i_line =[]
+for i in range(1, n**2 + 1):
+   i_line.append(i)
 
 for i in range(n):
     for j in range(n):
         arr[i][j] = int(arr[i][j])
         midl_a += arr[i][j]
-        for k in range(n**2):
-            if test[k] == arr[i][j]:
-                test.pop(k)
-            else:
-                flag += 1
+        line.append(arr[i][j])
+
+line.sort()
+
+if line != i_line:
+    flag += 1
+
 if midl_a / (n * n) == arr[i][j]:
     flag += 1
 # функция проверки суммы сторк
@@ -72,7 +74,7 @@ for i in range(n):
     else:
         flag += 1
         break
-    if meck_col:
+    if meck_col(arr, i):
         pass
     else:
         flag += 1
@@ -91,3 +93,4 @@ if flag == 0:
     print("YES")
 else:
     print("NO")
+
