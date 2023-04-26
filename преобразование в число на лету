@@ -1,0 +1,7 @@
+one = set(int(_) for _ in input().split())
+two = set(int(_) for _ in input().split())
+three = set(int(_) for _ in input().split())
+tmp = one.intersection(two)
+ant = tmp.difference(three)
+
+print(*sorted(ant, reverse=True))
