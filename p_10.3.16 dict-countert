@@ -1,0 +1,12 @@
+lst = input().split()
+dict_ = {}
+ant = []
+for word in lst:
+    if word in ant:
+        dict_[word] = dict_.get(word, 0) + 1
+        ant.append('{0}_{1}'.format(word, dict_[word]))
+    else:
+        dict_[word] = dict_.get(word, 0)
+        ant.append(word)
+
+print(*ant)
