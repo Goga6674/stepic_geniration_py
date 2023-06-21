@@ -1,0 +1,9 @@
+n = int(input())
+text = [input().split() for i in range(n)]
+
+dict_ = {}
+for st in text:
+    dict_.setdefault((st[0][0: len(st[0]) - 1]).lower(), ' '.join(st[1:]))
+m = int(input())
+for i in range(m):
+    print(dict_.get(input().lower(), "Не найдено"))
