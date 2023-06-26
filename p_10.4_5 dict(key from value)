@@ -1,0 +1,14 @@
+n = int(input())
+d = {}
+for i in range(n):
+    tmp = input()
+    d.setdefault(tmp.split()[0], tmp[len(tmp.split()[0]):])
+
+def f_key(dic, itam):
+    for key, value in dic.items():
+        if itam in value:
+            return key
+
+m = int(input())
+for i in range(m):
+    print(f_key(d, input()))
