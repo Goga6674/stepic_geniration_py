@@ -1,0 +1,17 @@
+#cin >> n
+n = int(input())
+# read n strig and save string in dictionary (key - text, value - digit)
+di = {}
+for i in range(n):
+    tmp = input().upper().split()
+    if tmp[-1] not in di:
+        di.setdefault(tmp[-1], tmp[0])
+    else:
+        dic = {}
+        dic.setdefault(tmp[-1], di[tmp[-1]] + ' ' + tmp[0])
+        di.update(dic)
+# cin >> m 
+m = int(input())
+# read m strig, find string in dictionary (key) and print value
+for i in range(m):
+    print(di.get(input().upper(), "абонент не найден"))
