@@ -1,0 +1,25 @@
+# cin >> word encrypt as text
+word = input()
+# cin num chars in antswer 
+n = int(input())
+# read frequency of chars entrys and save in dictionary
+fri_d = {}
+for i in range(n):
+    tmp = input().split()
+    fri_d.setdefault(tmp[0][0:-1], int(tmp[1]))
+# calculating: frransfomation str >> dict, char: frequency of char entrys
+tmp_dic = {}
+for char in word:
+    if char not in tmp_dic:
+        tmp_dic.setdefault(char, 1)
+    else:
+        tmp_dic[char] += 1
+#print(fri_d.items())
+# change symbols
+st = ''
+for ch in word:    
+    for key, val in tmp_dic.items():
+        for k, v in fri_d.items():
+            if v == int(val) and key == ch:
+                st += k
+print(st)
