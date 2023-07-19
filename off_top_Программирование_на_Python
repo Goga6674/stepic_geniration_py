@@ -1,0 +1,19 @@
+def unzip(st):
+    st = st[::-1]
+    ant = ''
+    num = ''
+    for ch in st:
+        if ch.isdigit():
+            num += ch
+        else:
+            ant += ch * int(num[::-1])
+            num =''
+    return ant[::-1]
+tmp = ''    
+with open("dataset_3363_2.txt", 'r') as res:  # read frome file
+    st = res.readline().strip()
+    st = unzip(st)
+    tmp = st
+print(tmp)
+"""with open("antswer.txt", 'w') as out:     # wright in file
+    out.write(tmp)"""
