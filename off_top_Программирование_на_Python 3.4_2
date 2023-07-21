@@ -1,0 +1,36 @@
+def find_key(dic, value):
+    """finding key in dictionary by value, raturn key with minimal leng"""
+    tmp = []
+    for k, i in dic.items():
+        if i == value:
+            tmp.append(k)
+        #print(k, i)
+    return min(tmp)
+    
+def find_pop_word(st):
+    """making dictionary words are keys, coutres of words are values and return dictionary"""
+    lst = st.lower().split()
+    dic = {}
+    for el in lst:
+        if el not in dic:
+            dic.setdefault(el, 1)
+        else:
+            dic[el] = dic.get(el) + 1
+    return dic
+    
+def read_from_file():
+    """ open file and raead strings, delte '\n' symbols and return all text as one stritg """
+    import os
+    line = []
+    with open(os.path.join('/', 'home', 'user', 'Загрузки', 'dataset_3363_3.txt'), 'r') as cin:
+        for st in cin:
+            line.append(st.strip())
+    return " ".join(line)
+    
+def main():
+    di = find_pop_word(read_from_file())
+    count = max(di.values())
+    ant = find_key(di, count)
+    print(ant, count)
+    
+main()
