@@ -1,0 +1,22 @@
+import requests
+import os
+
+
+def read_from_file():
+    """ open file and raead strings, delte '\n' symbols and return lins in list*2 """
+    
+    with open(os.path.join('/', 'home', 'user', 'Загрузки', 'dataset_3378_2.txt'), 'r') as cin:
+        line = cin.readline().strip()
+    
+    return(line)
+    
+def get_data(st):
+    """ принимает строку, вставляет строку в запрос, возращает текст в списке"""
+    lst = []     
+    req = requests.get(st)
+    s = req.text   # strip() was here
+    lst = s.splitlines()
+    print(len(lst))
+     
+
+get_data(read_from_file())
