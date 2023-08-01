@@ -1,0 +1,41 @@
+import requests
+import os
+"""Имеется набор файлов, каждый из которых, кроме последнего, содержит имя следующего файла.
+Первое слово в тексте последнего файла: "We".
+
+Скачайте предложенный файл. В нём содержится ссылка на первый файл из этого набора.
+
+Все файлы располагаются в каталоге по адресу:
+https://stepic.org/media/attachments/course67/3.6.3/
+
+Загрузите содержимое ﻿последнего файла из набора, как ответ на это задание."""
+
+adr = ''
+
+def read_from_file():
+    """ open file and raead strings, delte '\n' symbols and return lins in list*2 """
+    
+    with open(os.path.join('/', 'home', 'user', 'Загрузки', 'dataset_3378_3.txt'), 'r') as cin:
+        line = cin.readline().strip()
+    
+    return (line)
+    
+adr = read_from_file().split('/')[-1]    # наполняем переменную первым вызовом
+
+def make_link(st):
+    "принимает URL и добавляет к строке имя файла"
+    return("https://stepic.org/media/attachments/course67/3.6.3/" + st)   #  записывает текст вернувшийся из файла 
+    
+    
+def get_data_frome_link(st):
+    """ принимает строку, вставляет строку в запрос, возращает текст """   
+    req = requests.get(st)
+    s = req.text
+    return (s)
+       
+while "We" not in adr:
+    adr = get_data_frome_link(make_link(adr))
+    print(adr)    # чтобы было видно что приложение работает
+
+    with open(os.path.join('/', 'home', 'user', 'Загрузки', 'antswer.txt'), 'w') as cout:    # запись в файл
+        cout.write(adr)
