@@ -1,0 +1,33 @@
+"""
+На вход программе первой строкой передаётся количество 
+d известных нам слов, после чего на 
+d строках указываются эти слова. Затем передаётся количество 
+l строк текста для проверки, после чего l строк текста.
+"""
+
+def cin_words():
+    """ считываем количество известных слов формируем 'словарь' возвращаем 'словарь' """
+    n = int(input())
+    slov = {input().lower() for i in range(n)}
+    return slov
+    
+
+
+# считываем строки для проверки, преобразуем в список
+def cin_text():
+    n = int(input())
+    text = [input().lower().split() for i in range(n)]
+    return text
+
+# проверяем на наличие слов из списка в словаре, выводим на экран в случае несовпадения
+def chek(rul, text):
+    ant = set()
+    for line in text:
+        for word in line:
+            if word in rul:
+                continue
+            else:
+                ant.add(word)
+                
+    print(*ant, sep='\n')
+chek(cin_words(), cin_text())
